@@ -28,5 +28,5 @@ jobs:
           echo $latestVersion
           if [[ "$currVersion" == "$latestVersion" ]]; then
             echo "=== VERSION BUMP REQUIRED ==="
-            exit 1
+            return 1
           fi
