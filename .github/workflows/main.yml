@@ -22,6 +22,16 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Publish
         run: |
+          latestVersion=$(npm view @jim-brighter/lambda-local-runner version)
+          npm version $latestVersion --allow-same-version
+          commitMessage="${{ github.event.head_commit.message }}"
+          if [[ "$commitMessage" == *"(version:major)"* ]]; then
+            npm version major
+          elif [[ "$commitMessage" == *"(version:minor)"* ]]; then
+            npm version minor
+          else
+            npm version patch
+          fi
           npm i
           npm run pub
         env:
