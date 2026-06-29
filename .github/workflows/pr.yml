@@ -26,7 +26,7 @@ jobs:
           echo $currentVersion
           latestVersion=$(npm view @jim-brighter/lambda-local-runner version)
           echo $latestVersion
-          if [[ $currVersion == $latestVersion ]]; then
+          if [[ "$currVersion" == "$latestVersion" ]]; then
             echo "=== VERSION BUMP REQUIRED ==="
             exit 1
           fi
