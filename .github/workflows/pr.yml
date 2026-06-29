@@ -23,7 +23,9 @@ jobs:
       - name: Check Semver
         run: |
           currentVersion=$(npm pkg get version | tr -d '"')
+          echo $currentVersion
           latestVersion=$(npm view @jim-brighter/lambda-local-runner version)
+          echo $latestVersion
           if [[ $currVersion == $latestVersion ]]; then
             echo "=== VERSION BUMP REQUIRED ==="
             exit 1
