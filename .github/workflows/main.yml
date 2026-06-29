@@ -23,14 +23,14 @@ jobs:
       - name: Publish
         run: |
           latestVersion=$(npm view @jim-brighter/lambda-local-runner version)
-          npm version $latestVersion --allow-same-version
+          npm version $latestVersion --allow-same-version --no-commit-hooks --no-git-tag-version
           commitMessage="${{ github.event.head_commit.message }}"
           if [[ "$commitMessage" == *"(version:major)"* ]]; then
-            npm version major
+            npm version major --no-commit-hooks --no-git-tag-version
           elif [[ "$commitMessage" == *"(version:minor)"* ]]; then
-            npm version minor
+            npm version minor --no-commit-hooks --no-git-tag-version
           else
-            npm version patch
+            npm version patch --no-commit-hooks --no-git-tag-version
           fi
           npm i
           npm run pub
