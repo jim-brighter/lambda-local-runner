@@ -1,0 +1,29 @@
+{
+  "name": "@jim-brighter/lambda-local-runner",
+  "version": "0.0.2",
+  "description": "Simple CLI tool to run a lambda handler locally",
+  "homepage": "https://github.com/jim-brighter/lambda-local-runner#readme",
+  "bugs": {
+    "url": "https://github.com/jim-brighter/lambda-local-runner/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jim-brighter/lambda-local-runner.git"
+  },
+  "license": "ISC",
+  "author": "Jim Brighter",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "lambda-local-runner": "index.js"
+  },
+  "files": [
+    "index.js",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pub": "npm publish --access public"
+  }
+}
