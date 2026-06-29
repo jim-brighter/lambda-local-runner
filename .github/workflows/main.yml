@@ -1,0 +1,27 @@
+name: Publish
+on:
+  push:
+    branches:
+      - main
+concurrency:
+  group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: Publish
+        run: |
+          npm i
+          npm run pub
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
