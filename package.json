@@ -1,6 +1,6 @@
 {
   "name": "@jim-brighter/lambda-local-runner",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Simple CLI tool to run a lambda handler locally",
   "homepage": "https://github.com/jim-brighter/lambda-local-runner#readme",
   "bugs": {
