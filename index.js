@@ -1,12 +1,16 @@
 #!/usr/bin/env node
 
 import { createServer } from 'node:http';
+import { createJiti } from 'jiti';
+
+const jiti = createJiti(import.meta.url);
 
 const port = process.env.PORT ?? 3000;
 
 const handlerFile = process.argv[2];
 const handlerFunc = process.argv[3] || 'handler';
-const handlerModule = await import(`${process.cwd()}/${handlerFile}`);
+
+const handlerModule = await jiti.import(`${process.cwd()}/${handlerFile}`);
 const handler = handlerModule[handlerFunc];
 
 const server = createServer(async (req, res) => {
