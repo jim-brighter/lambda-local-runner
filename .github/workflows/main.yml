@@ -21,6 +21,7 @@ jobs:
           node-version: 24
           registry-url: 'https://registry.npmjs.org'
       - name: Publish
+        id: publish
         run: |
           latestVersion=$(npm view @jim-brighter/lambda-local-runner version)
           npm version $latestVersion --allow-same-version --no-commit-hooks --no-git-tag-version
@@ -32,5 +33,13 @@ jobs:
           else
             npm version patch --no-commit-hooks --no-git-tag-version
           fi
+          echo "newVersion=$(npm pkg get version | tr -d '"')" >> $GITHUB_OUTPUT
           npm i
           npm run pub
+      - name: Github Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          version="${{ steps.publish.outputs.newVersion }}"
+          gh release create "v$version" --generate-notes
+          
