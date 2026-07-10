@@ -5,6 +5,11 @@ Does not attempt to run any kind of gateway or load balancing layer.
 
 Uses [jiti](https://www.npmjs.com/package/jiti) for universal compatibility.
 
+### Installation
+```bash
+npm install --save-dev @jim-brighter/lambda-local-runner
+```
+
 ### Usage
 Provide the handler filename and function
 ```bash
