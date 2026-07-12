@@ -41,5 +41,4 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           version="${{ steps.publish.outputs.newVersion }}"
-          gh release create "v$version" --generate-notes
-          
+          gh release create "v$version" --generate-notes --target ${{ github.sha }}
