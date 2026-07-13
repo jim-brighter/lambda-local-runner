@@ -1,7 +1,7 @@
 # lambda-local-runner
 Super simple cli tool for running NodeJS lambda functions locally as a server.
 
-Does not attempt to run any kind of gateway or load balancing layer.
+Does not attempt to run any kind of gateway or load balancing layer, but does format events similar to API Gateway.
 
 Uses [jiti](https://www.npmjs.com/package/jiti) for universal compatibility.
 
